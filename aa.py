@@ -1,2 +1,1 @@
-import os
-os.system('bb.py')
+exec(open("./bb.py").read())
