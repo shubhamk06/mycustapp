@@ -1,5 +1,5 @@
 FROM python:3
+RUN pip install -r requirements.txt
 ADD aa.py /
 ADD bb.py /
-RUN pip install os
 CMD [ "python", "./aa.py" ]
