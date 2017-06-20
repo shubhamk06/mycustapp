@@ -16,4 +16,3 @@ ftp.cwd(path)
 ftp.retrbinary("RETR " + filename ,open(filename, 'wb').write)
 ftp.quit()
 exec(open("./hello.py").read())
-pause
