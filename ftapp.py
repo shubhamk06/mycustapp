@@ -3,6 +3,8 @@ import ftplib
 
 app = Flask(__name__)
 
+port = int(os.getenv("PORT"))
+
 @app.route('/')
 def hello_world():
     path = 'dow/'
@@ -16,4 +18,4 @@ def hello_world():
     return 'Hello, World!'
 
 if __name__ == '__main__':
-   app.run(host='0.0.0.0')
+   app.run(host='0.0.0.0', port=port)
